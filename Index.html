@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Certificados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #baf7d9; /* Azul claro */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        h1 {
+            padding: 20px 0;
+        }
+
+        h2 {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* Diplomas principais */
+        .diplomas-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .diploma {
+            text-align: center;
+            width: 300px;
+        }
+
+        .diploma img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .diploma img:hover {
+            transform: scale(1.1);
+        }
+
+        .diploma p {
+            margin-top: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+         /* ====== Mural ====== */
+    .mural {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      justify-items: center;
+    }
+
+    .mural-item {
+      width: 150px;
+      position: relative;
+      text-align: center;
+      overflow: visible; /* permite zoom sair pra fora */
+    }
+
+    .mural-item img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s;
+      cursor: pointer;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mural-item img:hover {
+      transform: scale(1.5);
+      z-index: 10;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      .diplomas {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+     .mural-item a {
+      text-decoration: none; /* remove sublinhado */
+      color: inherit;
+     }
+
+     a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+  max-width: 80%;
+  height: auto;
+}
+
+/* Modal para visualizar fotos */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-conteudo {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
+
+.fechar {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+    </style>
+</head>
+
+<!-- Modal para fotos -->
+<div id="modal" class="modal">
+  <span class="fechar">&times;</span>
+  <img class="modal-conteudo" id="imgModal">
+</div>
+
+
+<script>
+  var modal = document.getElementById("modal");
+  var modalImg = document.getElementById("imgModal");
+  var span = document.getElementsByClassName("fechar")[0];
+
+  // Adiciona evento para todas as imagens do site
+  document.querySelectorAll("img").forEach(function(img) {
+    img.addEventListener("click", function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+    });
+  });
+
+  // Fecha ao clicar no X
+  span.onclick = function() { 
+    modal.style.display = "none";
+  }
+
+  // Fecha ao clicar fora da imagem
+  modal.onclick = function(e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+<body>
+
+    <h1>Meus Certificados</h1>
+
+    <!-- Diplomas principais -->
+    <div class="diplomas-container">
+        <div class="diploma">
+            <a href="C1.jpeg" target="_blank">
+                <img src="C1.jpeg" alt="Diploma Faculdade 1">
+                <p>Graduação em Administração de empresas - Unianchieta (2001 - 2004)</p>
+            </a>
+        </div>
+        <div class="diploma">
+            <a href="C2.jpeg" target="_blank">
+                <img src="C2.jpeg" alt="Diploma Faculdade 2">
+                <p>Pós graduação em Administração de empresas - FGV (2006 - 2008)</p>
+            </a>
+        </div>
+        
+        <div class="diploma">
+            <a href="C3.jpeg" target="_blank">
+                <img src="C3.jpeg" alt="Certificado de Inglês">
+                <p>Curso de Power BI e Data Science - DSA (2025)</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Título do mural -->
+    <h2>Meus cursos em tecnologia (Alura)</h2>
+
+    <!-- Mural estilo Instagram Dom Cabron -->
+    <div class="mural">
+        <div class="mural-item">
+            <a href="C5.png" target="_blank">
+                <img src="C5.png" alt="Mini Foto 1">
+                <p>HTML / CSS</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C6.png" target="_blank">
+                <img src="C6.png" alt="Mini Foto 2">
+                <p>HTML / CSS</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C7.png" target="_blank">
+                <img src="C7.png" alt="Mini Foto 3">
+                <p>HTML / CSS</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C8.png" target="_blank">
+                <img src="C8.png" alt="Mini Foto 4">
+                <p>HTML / CSS</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C9.png" target="_blank">
+                <img src="C9.png" alt="Mini Foto 5">
+                <p>HTML / CSS</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C10.png" target="_blank">
+                <img src="C10.png" alt="Mini Foto 6">
+                <p>HTML / CSS</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C11.png" target="_blank">
+                <img src="C11.png" alt="Mini Foto 7">
+                <p>HTML / CSS</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C12.png" target="_blank">
+                <img src="C12.png" alt="Mini Foto 8">
+                <p>HTML / CSS</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C13.png" target="_blank">
+                <img src="C13.png" alt="Mini Foto 9">
+                <p>HTML / CSS</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C14.png" target="_blank">
+                <img src="C14.png" alt="Mini Foto 10">
+                <p>Javascript</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C15.png" target="_blank">
+                <img src="C15.png" alt="Mini Foto 11">
+                <p>Python</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C16.png" target="_blank">
+                <img src="C16.png" alt="Mini Foto 12">
+                <p>Javascript</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C17.png" target="_blank">
+                <img src="C17.png" alt="Mini Foto 13">
+                <p>SQL Server</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C18.png" target="_blank">
+                <img src="C18.png" alt="Mini Foto 14">
+                <p>Python</p>
+            </a>
+        </div>
+        <div class="mural-item">
+            <a href="C19.png" target="_blank">
+                <img src="C19.png" alt="Mini Foto 15">
+                <p>Modelagem de ameaças (Cybersecurity) </p>
+            </a>
+        </div>
+
+
+        <div class="mural-item">
+            <a href="C19.png" target="_blank">
+                <img src="C19.png" alt="Mini Foto 15">
+                <p>Modelagem de ameaçãs (Cybersecurity)</p>
+            </a>
+        </div>
+
+
+        <div class="mural-item">
+            <a href="C20.png" target="_blank">
+                <img src="C20.png" alt="Mini Foto 15">
+                <p>Python</p>
+            </a>
+        </div>
+
+       
+
+
+
+         
+
+
+       
+
+
+
+
