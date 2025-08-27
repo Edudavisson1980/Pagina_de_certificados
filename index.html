@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+
     <title>Meus Certificados</title>
     <style>
         body {
@@ -110,8 +111,75 @@ img {
   height: auto;
 }
 
+/* Modal para visualizar fotos */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-conteudo {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
+
+.fechar {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
     </style>
 </head>
+
+<!-- Modal para fotos -->
+<div id="modal" class="modal">
+  <span class="fechar">&times;</span>
+  <img class="modal-conteudo" id="imgModal">
+</div>
+
+
+<script>
+  var modal = document.getElementById("modal");
+  var modalImg = document.getElementById("imgModal");
+  var span = document.getElementsByClassName("fechar")[0];
+
+  // Adiciona evento para todas as imagens do site
+  document.querySelectorAll("img").forEach(function(img) {
+    img.addEventListener("click", function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+    });
+  });
+
+  // Fecha ao clicar no X
+  span.onclick = function() { 
+    modal.style.display = "none";
+  }
+
+  // Fecha ao clicar fora da imagem
+  modal.onclick = function(e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
 <body>
 
     <h1>Meus Certificados</h1>
@@ -133,10 +201,18 @@ img {
         
         <div class="diploma">
             <a href="C3.jpeg" target="_blank">
-                <img src="C3.jpeg" alt="Certificado de Inglês">
+                <img src="C3.jpeg" alt="Curso técnico 3">
                 <p>Curso de Power BI e Data Science - DSA (2025)</p>
             </a>
         </div>
+
+         <div class="diploma">
+            <a href="C4.jpeg" target="_blank">
+                <img src="C4.jpeg" alt="Diploma faculdade 4">
+                <p>Graduação em Análise e Desenvolvimento de Sistemas - Unianchieta (2023 - 2025)</p>
+            </a>
+        </div>
+
     </div>
 
     <!-- Título do mural -->
@@ -250,6 +326,10 @@ img {
                 <p>Python</p>
             </a>
         </div>
+
+       
+
+
 
          
 
