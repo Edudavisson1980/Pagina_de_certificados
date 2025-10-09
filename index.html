@@ -144,10 +144,53 @@ img {
 }
 
 
+/* ---------- correção mural: centralizar título abaixo de cada imagem ---------- */
 .mural-item {
+  width: 150px;
+  position: relative;
+  overflow: visible; /* permite zoom sair para fora sem cortar */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centraliza horizontalmente todo o conteúdo do item */
+  text-align: center;
+}
+
+.mural-item a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Garante que a imagem ocupe a largura do item e que o hover não altere o layout */
+.mural-item img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  z-index: 1;
+  transform-origin: center center;
+}
+
+/* Zoom sobreposto (não empurra o parágrafo) */
+.mural-item img:hover {
+  transform: scale(1.4);
+  z-index: 10;
+}
+
+/* Estilo e centralização do título */
+.mural-item p {
+  display: block;
+  width: 100%;
+  margin: 8px 0 0;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
 }
 
     </style>
